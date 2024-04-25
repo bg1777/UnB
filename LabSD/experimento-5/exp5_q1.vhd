@@ -27,7 +27,7 @@ entity exp5_q1 is
 
 end exp5_q1;
 
-architecture Behavioral of exp5-q1 is
+architecture Behavioral of exp5_q1 is
 
     component SOMADOR is
 
