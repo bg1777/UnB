@@ -47,7 +47,7 @@ begin
     carry(0) <= '0';
 
     for i in 0 to 3 generate
-        somador_inst: SOMADOR port map (A(i), B(i), carry(i), S(i), carry(i+1));
+        u0 : SOMADOR port map (A(i), B(i), carry(i), S(i), carry(i+1));
     end generate;
 
     S(4) <= carry(4);
