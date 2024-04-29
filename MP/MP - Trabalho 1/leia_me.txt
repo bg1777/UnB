@@ -1,2 +1,18 @@
 ﻿com o g++ e o make e demais programas instalados 
 digite "make" neste diretório 
+
+para compilar, basta digitar make compile no terminal com as devidas dependências instaladas,
+que seriam o g++ e a extensão que dá suporte para makefiles.
+
+para testar, digitar make test no terminal
+
+para testar a cobertura, digitar make gcov no terminal e depoius gcovr,
+com o gcovr instalado.
+
+para usar o valgrind, digitar make valgrind no terminal com ele instalado
+
+para usar o cpplint, digitar make cpplint
+
+para debugar digitar make debug no terminal com GDB instalado
+
+para limpar os arquivos, digiar make clean.

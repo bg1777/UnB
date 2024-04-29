@@ -1,5 +1,21 @@
 #include "romanos.hpp"
 
+bool subtracoes_repetidas(const char *num_romano) {
+    for (int i = 0; num_romano[i] != '\0'; i++) {
+        if (num_romano[i] == 'I' || num_romano[i] == 'X' || num_romano[i] == 'C') {
+            char proximo_caractere = num_romano[i + 1];
+            if ((num_romano[i] == 'I' && (proximo_caractere == 'V' || proximo_caractere == 'X')) ||
+                (num_romano[i] == 'X' && (proximo_caractere == 'L' || proximo_caractere == 'C')) ||
+                (num_romano[i] == 'C' && (proximo_caractere == 'D' || proximo_caractere == 'M'))) {
+                if (num_romano[i] == num_romano[i + 2]) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
 bool mais_de_quatro_repeticoes(const char *num_romano) {
     int frequencia[7] = {0};
     for (int i = 0; num_romano[i] != '\0'; i++) {
@@ -77,11 +93,7 @@ int valor_romano(char caractere) {
 }
 
 int romanos_para_decimal(char const * num_romano) {
-    if (mais_de_quatro_repeticoes(num_romano)) {
-        return -1;
-    }
-
-    if (tem_repeticao_consecutiva(num_romano)) {
+    if (mais_de_quatro_repeticoes(num_romano) || tem_repeticao_consecutiva(num_romano) || subtracoes_repetidas(num_romano)) {
         return -1;
     }
 
@@ -102,7 +114,7 @@ int romanos_para_decimal(char const * num_romano) {
                 return -1;
             }
             int subtracao = valor_romano(num_romano[i + 1]) - valor_atual;
-            if (subtracao == 4 || subtracao == 5 || subtracao == 40 || subtracao == 50 || subtracao == 400 || subtracao == 500) {
+            if (subtracao == 4 || subtracao == 9 || subtracao == 40 || subtracao == 90 || subtracao == 400 || subtracao == 500) {
                 decimal -= valor_atual;
             } else {
                 return -1;
