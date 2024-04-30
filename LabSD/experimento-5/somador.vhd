@@ -16,23 +16,16 @@
 
 library IEEE;
 use IEEE.std_logic_1164.all;
-
-entity SOMADOR 
-    is port (
+entity SOMADOR is port (
         A      :in std_logic; 
         B      :in std_logic; 
         Cin    :in std_logic; 
-        S      :out std_logic; 
-        Cout   :out std_logic 
+        s      :out std_logic; 
+        COUT   :out std_logic 
     );
 end SOMADOR;
-
 architecture Behavioral of SOMADOR is
-
 begin
-
 S <= A xor B xor Cin;
-
 Cout <= (A and B) or (A and Cin) or (B and Cin);
-
 end Behavioral;
